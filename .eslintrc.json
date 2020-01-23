@@ -24,6 +24,7 @@
     ],
     "rules": {
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "import/no-unresolved": "off",
         "no-multi-spaces": ["error", {
             "exceptions": {
                 "ImportDeclaration": true,
@@ -40,6 +41,7 @@
                 "newlinesBetween": "always",
                 "groups": [
                     "module",
+                     "/@/",
                     // "/^@shared/",
                     ["parent", "sibling", "index"]
                 ],
