@@ -24,6 +24,16 @@
     ],
     "rules": {
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "no-multi-spaces": ["error", {
+            "exceptions": {
+                "ImportDeclaration": true,
+                "VariableDeclarator": true,
+                "BinaryExpression": true,
+                "Property": true
+            }
+        }],
+        "key-spacing": ["error", { "align": "value" }],
+        "import/prefer-default-export": "off",
         "import-helpers/order-imports": [
             "warn",
             {
