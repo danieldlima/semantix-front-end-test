@@ -10,5 +10,6 @@ export const Transition = (type = 'all', velocity = '.4s') => ({
 });
 
 export const Padding = {
-  page: '0 15%',
+  page:    '0 15%',
+  default: 1.5,
 };
