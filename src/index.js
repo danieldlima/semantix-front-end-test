@@ -3,16 +3,15 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { BrowserRouter } from 'react-router-dom';
-import { store, persistor } from './store/store';
 
+import { store, persistor } from './store/store';
 import App from './pages/home/App';
 import { GlobalStyle } from './assets/styles/styles.global';
 
 import './config/global';
-
 import './index.css';
 
-const Root = () => (
+ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <PersistGate persistor={persistor} loading={null}>
@@ -22,7 +21,6 @@ const Root = () => (
         </>
       </PersistGate>
     </BrowserRouter>
-  </Provider>
+  </Provider>,
+  document.querySelector('#root'),
 );
-
-ReactDOM.render(<Root />, document.querySelector('#root'));

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-import {Colors, Padding, Transition} from '../../assets/styles/variables';
+import { screenMin, screenMax } from '@/assets/styles/breakpoints';
+import { Colors, Padding, Transition } from '@/assets/styles/variables';
 
 // import { screenMin } from '@/assets/styles/breakpoints';
 
@@ -8,13 +9,40 @@ export const Header = styled.header`
   position: fixed;
   top: 0;
   bottom: 0;
+  //left: -10%;
   left: 0;
   width: 100%;
   max-width: 10rem;
+  height: 100%;
   display: grid;
-  grid-template-rows: 0.1fr 1fr;
+  grid-template-rows: 0.1fr 0.1fr 1fr;
   padding: ${Padding.default + 0.5}rem 0;
   background: linear-gradient(180deg, #000000 0%, #B5B5B5 100%);
+  transition: ${Transition().default};
+  z-index: 1;
+  
+  ${(props) => (props.mobile
+    ? 'background: red;'
+    : '')
+
+}
+  
+  /*${screenMax.xl`
+    max-width: 100%;
+    height: 6rem;
+    background: linear-gradient(45deg, #000000 0%, #B5B5B5 100%);
+  
+    :before {
+      position: absolute;
+      content: '';
+      width: 3rem;
+      height: 2px;
+      background-color: white;
+    }
+  `}*/
+  
+  ${screenMin.xl`
+  `}
   
 `;
 

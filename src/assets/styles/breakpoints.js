@@ -1,10 +1,11 @@
 import { css } from 'styled-components';
 
 const screens = {
-  sm: { min: 640, max: 639, custom: 0 },
-  md: { min: 768, max: 767, custom: 0 },
-  lg: { min: 1024, max: 1023, custom: 0 },
-  xl: { min: 1280, max: 1279, custom: 0 },
+  sm:  { min: 640, max: 639, custom: 0 },
+  md:  { min: 768, max: 767, custom: 0 },
+  lg:  { min: 1024, max: 1023, custom: 0 },
+  xl:  { min: 1280, max: 1279, custom: 0 },
+  xxl: { min: 1800, max: 1799, custom: 0 },
 };
 
 export const screenMin = Object.keys(screens).reduce((acc, label) => {

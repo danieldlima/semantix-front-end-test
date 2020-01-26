@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import Container from '../../assets/styles/container';
+import Container from '@/assets/styles/container';
 
 const CircleIconComponent = ({ fillColor, size }) => (
   <Container size={size}>

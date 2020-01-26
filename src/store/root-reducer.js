@@ -5,8 +5,8 @@ import storage from 'redux-persist/lib/storage';
 import navigationReducer from './navigation/navigation.reducer';
 
 const persistConfig = {
-  storage,
   key:       'root',
+  storage,
   whitelist: ['navigation'],
 };
 

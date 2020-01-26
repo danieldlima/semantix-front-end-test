@@ -1,6 +1,5 @@
 import React from 'react';
-
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 // import { createStructuredSelector } from 'reselect';
 // import { connect } from 'react-redux';
 
@@ -10,6 +9,7 @@ import LeafIconComponent from '@components/store-icons/leaf-icon.component';
 
 import LinkComponent from '../link/link.component';
 import NAVIGATION_DATA from './navigation.data';
+
 import { Container, Header, Nav } from './navigation.styled';
 
 const icons = [
@@ -18,8 +18,8 @@ const icons = [
   <CircleIconComponent />,
 ];
 
-const NavigationComponent = () => (
-  <Header>
+const NavigationComponent = ({ hidden }) => (
+  <Header mobile={hidden}>
     <Container padding="1.5rem">
       <Logo color="white" areaLabel="Homepage Semantix" />
     </Container>
@@ -38,5 +38,9 @@ const NavigationComponent = () => (
     </div>
   </Header>
 );
+
+NavigationComponent.propTypes = {
+  hidden: PropTypes.bool.isRequired,
+};
 
 export default NavigationComponent;
