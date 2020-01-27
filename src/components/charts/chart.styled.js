@@ -3,6 +3,24 @@ import styled from 'styled-components';
 import { Colors, Transition } from '@/assets/styles/variables';
 import { screenMin, screenMax, screenCustom } from '@/assets/styles/breakpoints';
 
+export const Title = styled.div`
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.6rem;
+  line-height: 20px;
+  text-transform: uppercase;  
+  color: ${Colors.greenDarkLevel1};  
+  margin-bottom: 2rem;
+  
+  ${screenCustom('max', 414).sm`
+    margin: 1rem 0 0 1rem;
+  `}
+  
+  ${screenCustom('max', 320).sm`
+    margin: 1rem 0 0 1rem;
+  `}
+`;
+
 export const Container = styled.div`
   position: relative;
   width: calc( (100% / 3) - 5rem );
@@ -16,6 +34,16 @@ export const Container = styled.div`
     rgba(90, 97, 105, 0.06), 0px 3px 6px rgba(90, 97, 105, 0.12), 0px 1px 0px 
     rgba(90, 97, 105, 0.11);
   transition: ${Transition().default};
+  
+  > ${Title} {
+    ${screenCustom('max', 414).sm`
+      margin: 1rem 0 0 1rem;
+    `}
+    
+    ${screenCustom('max', 320).sm`
+      margin: 1rem 0 0 1rem;
+    `}
+  }
   
   ${screenMax.md`
     margin-bottom: 5rem;
@@ -52,7 +80,7 @@ export const Container = styled.div`
   `}
   
   ${screenMin.lg`
-    margin-left: 5rem;
+    // margin-left: 5rem;
     + div:nth-child(3) {
       width: calc( 100% - 5rem );
     }
@@ -68,6 +96,10 @@ export const Container = styled.div`
     }
   `}
   
+  :first-child {
+  margin-left: 0;
+  }
+  
   + div:nth-child(3) {
     transition: ${Transition().default};
   }
@@ -81,23 +113,4 @@ export const Container = styled.div`
 export const ContentBox = styled.div`
   position: relative;
   height: 100%;
-`;
-
-export const Title = styled.div`
-  font-style: normal;
-  font-weight: 600;
-  font-size: 1.6rem;
-  line-height: 20px;
-  text-transform: uppercase;  
-  color: ${Colors.greenDarkLevel1};
-  
-  margin-bottom: 2rem;
-  
-  ${screenCustom('max', 414).sm`
-    margin: 1rem 0 0 1rem;
-  `}
-  
-  ${screenCustom('max', 320).sm`
-    margin: 1rem 0 0 1rem;
-  `}
 `;

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 // import { connect } from 'react-redux';
 
 
-const Logo = ({ color, areaLabel }) => ( // width="78" height="15"
+const Logo = ({ color, areaLabel }) => (
   <a href="/?logo=1" aria-label={areaLabel}>
     <svg viewBox="0 0 78 15" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path

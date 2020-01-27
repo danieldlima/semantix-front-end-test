@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Switch, Route, Redirect }  from 'react-router-dom';
+import { Switch, Route }  from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
@@ -11,6 +11,7 @@ import { toggleNavigationHidden } from '@/store/navigation/navigation.actions';
 
 import HomePage from './home/Home.page';
 import Page2 from './page2/page2.page';
+import Page3 from './page3/page3.page';
 import { Main } from './app.styled';
 
 const App = ({ hidden, toggleNavigationHidden }) => {
@@ -37,6 +38,7 @@ const App = ({ hidden, toggleNavigationHidden }) => {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/page2" component={Page2} />
+          <Route exact path="/page3" component={Page3} />
         </Switch>
       </Main>
     </>

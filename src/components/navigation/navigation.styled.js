@@ -1,10 +1,7 @@
 import styled from 'styled-components';
 
-// import { screenMin } from '@/assets/styles/breakpoints';
 import { Colors, Padding, Transition } from '@/assets/styles/variables';
 import { screenMax, screenMin } from "@/assets/styles/breakpoints";
-
-// import { screenMin } from '@/assets/styles/breakpoints';
 
 export const Container = styled.div`
   padding: ${(props) => props.padding};
@@ -47,20 +44,23 @@ export const Nav = styled.nav`
         transition: ${Transition('all', '.3s').default};
       }
       
-      @media (hover: hover) {      
-        :hover {
-          background: rgba(255, 255, 255, 0.2);
-          transition: ${Transition().default};
-        
-          > div:first-child {
-            top: 50%;
-            transform: translateY(-50%);
-          }
-          > div:last-child {      
-            opacity: 0;
+      ${screenMin.xl`
+        @media (hover: hover) {      
+          :hover {
+            background: rgba(255, 255, 255, 0.2);
+            transition: ${Transition().default};
+          
+            > div:first-child {
+              top: 50%;
+              transform: translateY(-50%);
+            }
+            > div:last-child {      
+              opacity: 0;
+            }
           }
         }
-      }
+      `};
+      
     }
 `;
 
@@ -222,7 +222,7 @@ export const Header = styled.header`
   bottom: 0;
   left: 0;
   width: 100%;
-  max-width: 10rem;
+  max-width: 12rem;
   height: 100%;
   background: linear-gradient(180deg, #000000 0%, #B5B5B5 100%);
   padding: ${Padding.default + 0.5}rem 0;

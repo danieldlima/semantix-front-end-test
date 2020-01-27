@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { ChartsContent, Title } from './page2.styled';
+import { ChartsContent, Title } from './page3.styled';
 import LinesChartComponent from "@/components/charts/lines/lines-chart.component";
 
-const Page2Page = () => (
+const Page3Page = () => (
   <>
     <Title>
-      Page 2
+      Page 3
     </Title>
     <ChartsContent>
       <LinesChartComponent screenSize="md" />
@@ -14,4 +14,4 @@ const Page2Page = () => (
   </>
 );
 
-export default Page2Page;
+export default Page3Page;

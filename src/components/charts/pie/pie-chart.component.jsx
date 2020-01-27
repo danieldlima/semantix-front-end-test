@@ -54,6 +54,7 @@ export default class PieChartComponent extends React.Component {
         align: 'end',
         offset: true,
         labels: {
+          usePointStyle: true,
           boxWidth: 12,
           padding: 15,
         },

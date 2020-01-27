@@ -2,9 +2,9 @@ import React from 'react';
 import { Line } from 'react-chartjs-2';
 
 import { chartBarAPI } from '@/services/api';
-import { Container, ContentBox, Title } from "../chart.styled";
-
-import { data, options } from "../chart.config";
+import { Container } from "./lines-chart.styled";
+import { ContentBox, Title } from "../chart.styled";
+import { dataConfig as config, options as opt } from "./lines-charts.config";
 
 // import PropTypes from 'prop-types';
 // import { createStructuredSelector } from 'reselect';
@@ -15,7 +15,9 @@ export default class LinesChartComponent extends React.Component {
     super(props);
 
     this.state = {
-      annualResultGraph: []
+      annualResultGraph: [],
+      today: '',
+      yesterday: '',
     };
   }
 
@@ -25,36 +27,42 @@ export default class LinesChartComponent extends React.Component {
   }
 
   loadGraphicResult = async () => {
-    const response = await chartBarAPI.get('/time-data');
-    this.setState({ annualResultGraph: response.data });
+    const response = await chartBarAPI.get('/time-data')
+    this.setState({ annualResultGraph: response.data }, () => {
+      this.setState({ today: response.data.today });
+      this.setState({ yesterday: response.data.yesterday });
+    });
   };
 
   render () {
-    const { annualResultGraph } = this.state;
-    let resultDataToday = annualResultGraph.today;
-    let resultDataYesterday = annualResultGraph.yesterday;
+    const { today, yesterday } = this.state;
 
-    let data = [
-      {
-        resultDataToday,
-        resultDataYesterday
+    let dataToday = { labels: [], values: [] };
+    let dataYesterday = { labels: [], values: [] };
+
+    for (let results in today) {
+      if(today.hasOwnProperty(results) && yesterday.hasOwnProperty(results)) {
+        // TODAY
+        dataToday.labels.push(today[results].label);
+        dataToday.values.push(today[results].value);
+
+        // Yesterday
+        dataYesterday.labels.push(yesterday[results].label);
+        dataYesterday.values.push(yesterday[results].value);
       }
-    ]
-        // .filter((item, idx) => idx < 7)
-        // .map(item => item);
-    console.log('annualResultGraph ->', annualResultGraph)
-    console.log('resultDataToday ->', resultDataToday)
-    console.log('resultDataYesterday ->', resultDataYesterday)
-    //
-    // let dataLinesChart = data;
-    // dataLinesChart.labels = resultData.map((result) => result.label);
-    // dataLinesChart.datasets[0].data = resultData.map((result) => result.value);
+    }
+
+    let dataConfig = config;
+    dataConfig.labels = dataToday.labels;
+    dataConfig.datasets[0].data = dataToday.values;
+    dataConfig.datasets[1].data = dataYesterday.values;
+
 
     return (
-        <Container>
+        <Container className={`screen${this.props.screenSize === 'md' ? '--md' : ''}`}>
           <Title>Lines CHART</Title>
           <ContentBox>
-            <Line data={data} />
+            <Line data={dataConfig} options={opt} />
           </ContentBox>
         </Container>
     );

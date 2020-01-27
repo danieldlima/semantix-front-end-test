@@ -1,9 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 // import PropTypes from 'prop-types';
 // import { createStructuredSelector } from 'reselect';
 // import { connect } from 'react-redux';
-
-import PropTypes from 'prop-types';
 
 import Logo from '@components/logo/logo.component';
 import CircleIconComponent from '@components/store-icons/circle-icon.component';
@@ -24,7 +24,7 @@ const icons = [
   <CircleIconComponent />,
 ];
 
-const NavigationContentComponent = ({ hidden, toggleDrawer }) => (
+const NavigationContentComponent = ({ hidden, toggleDrawer, isMobile }) => (
   <Container>
     <Container padding="1.5rem">
       <Logo color="white" areaLabel="Homepage Semantix" />
@@ -38,9 +38,16 @@ const NavigationContentComponent = ({ hidden, toggleDrawer }) => (
       <Nav>
         {
             NAVIGATION_DATA.map(({ id, label, href }, idx) => (
-                <LinkComponent key={id} href={href} label={label}>
+              isMobile ? (
+                <LinkComponent toggleDrawer={toggleDrawer} key={id} href={href} label={label}>
                   { icons[idx] }
                 </LinkComponent>
+              )
+                : (
+                  <LinkComponent key={id} href={href} label={label}>
+                    { icons[idx] }
+                  </LinkComponent>
+                )
             ))
           }
       </Nav>
@@ -51,6 +58,11 @@ const NavigationContentComponent = ({ hidden, toggleDrawer }) => (
 NavigationContentComponent.propTypes = {
   hidden:       PropTypes.bool.isRequired,
   toggleDrawer: PropTypes.func.isRequired,
+  isMobile:     PropTypes.bool,
+};
+
+NavigationContentComponent.defaultProps = {
+  isMobile: false,
 };
 
 export default NavigationContentComponent;

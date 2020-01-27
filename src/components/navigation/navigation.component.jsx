@@ -16,7 +16,7 @@ const NavigationComponent = ({ isOpen, isMobile, toggleDrawer }) => (
         <CloseButtonBox onClick={toggleDrawer}>
           <CloseButton />
         </CloseButtonBox>
-        <NavigationContentComponent hidden={isOpen} toggleDrawer={toggleDrawer} />
+        <NavigationContentComponent isMobile hidden={isOpen} toggleDrawer={toggleDrawer} />
       </HeaderMobile>
     )
     : (

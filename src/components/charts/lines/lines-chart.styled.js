@@ -17,6 +17,16 @@ export const Container = styled.div`
     rgba(90, 97, 105, 0.11);
   transition: ${Transition().default};
   
+  &.screen--md {
+    ${screenMin.md`
+      width: 100%;
+    `}
+    
+    ${screenMin.xl`
+      width: calc( (100% / 2) - 5rem );
+    `}
+  }
+  
   ${screenMax.md`
     margin-bottom: 5rem;
     
@@ -30,8 +40,8 @@ export const Container = styled.div`
   `}
   
   ${screenCustom('max', 414).sm`
-    height: calc(10rem * 2);
-    padding: 0 0 5rem;
+    height: calc( (10rem * 3) - 1rem );
+    padding: 0 0.5rem 5rem;
   `}
   
   ${screenMin.md`
@@ -74,28 +84,4 @@ export const Container = styled.div`
     margin-left: 5rem;
     transition: ${Transition().default};
   }
-`;
-
-export const ContentBox = styled.div`
-  position: relative;
-  height: 100%;
-`;
-
-export const Title = styled.div`
-  font-style: normal;
-  font-weight: 600;
-  font-size: 1.6rem;
-  line-height: 20px;
-  text-transform: uppercase;  
-  color: ${Colors.greenDarkLevel1};
-  
-  margin-bottom: 2rem;
-  
-  ${screenCustom('max', 414).sm`
-    margin: 1rem 0 0 1rem;
-  `}
-  
-  ${screenCustom('max', 320).sm`
-    margin: 1rem 0 0 1rem;
-  `}
 `;

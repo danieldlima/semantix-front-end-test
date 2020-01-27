@@ -2,7 +2,6 @@ import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
 
 import { Colors } from './variables';
-// import { screenMin } from './breakpoints';
 
 export const GlobalStyle = createGlobalStyle`
   ${normalize}

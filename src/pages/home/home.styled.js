@@ -1,5 +1,22 @@
 import styled from 'styled-components';
 
+import { screenCustom } from "@/assets/styles/breakpoints";
+
+export const Title = styled.div`
+  font-size: 48px;
+  line-height: 65px;
+  color: #001B36;
+  margin-bottom: 5rem;
+  
+  ${screenCustom('max', 414).sm`
+    margin: 1rem 0 0 1rem !important;
+  `};
+      
+  ${screenCustom('max', 320).sm`
+    margin: 1rem 0 0 1rem !important;
+  `};
+`;
+
 export const ChartsContent = styled.section`
   width: 100%;
   display: flex;
@@ -7,19 +24,4 @@ export const ChartsContent = styled.section`
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
-  
-  div:nth-child(1),
-  div:nth-child(4),
-  div:nth-child(7),
-  div:nth-child(10),
-  div:nth-child(13) {
-    margin-left: 0;
-  }
-`;
-
-export const Title = styled.div`
-  font-size: 48px;
-  line-height: 65px;
-  color: #001B36;
-  margin-bottom: 5rem;
 `;
